@@ -11,7 +11,8 @@ class LeafNode(HTMLNode):
             raise ValueError
         if self.tag==None:
             return self.value
-        return f"<{self.tag}{self.props_to_html()}>{self.value}</{self.tag}>"
+        start_tag, end_tag = self.get_tags()
+        return f"{start_tag}{self.value}{end_tag}"
 
     def __repr__(self):
-        return f"LeafNode({self.tag},{self.value},,{self.props})"
+        return f"LeafNode({self.tag},{self.value},{self.props})"
